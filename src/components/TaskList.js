@@ -1,47 +1,31 @@
 import React, {useState} from "react";
+import { TASKS } from "../data";
 import Task from "./Task";
 
-function TaskList() {
-  const [tasks, setTask] = useState("");
 
-  const handleDelete = (event) => {
-    setTask(event.target.parentNode.remove());
-    
-  }
-  return (
-    <div className="tasks">
-      {tasks.map(task => <Task key={task.text} text={task.text} category={task.category} handleDelete={handleDelete} />)}
-    </div>
-  );
+function TaskList({ removeTask }) {
+  const [tasks, setTask] = useState(TASKS);
+  // console.log(tasks)
+
+  // const handleDelete = (event) => {
+  //   // console.log('how')
+  //   setTask(event.target.parentNode.remove());
+  // };
+
+  const taskList = tasks.map((task) => {
+    // console.log()
+    return (
+      <Task
+        key={task.text}
+        text={task.text}
+        category={task.category}
+        removeTask = {removeTask}
+        // handleDelete={handleDelete}
+      />
+    );
+  });
+
+  // console.log(taskList);
+  return <div className="tasks">{taskList}</div>;
 }
-//   return (
-//     <div className="tasks">
-//       {tasks.map((task) => (
-//         <Task
-//           key={task.text}
-//           text={task.text}
-//           category={task.category}
-//           handleDelete={handleDelete}
-//         />
-//       ))}
-//     </div>
-//   );
-// }
-
-// function TaskList() {
-//   const [task, setTask] = useState();
-//   return (
-//     <div className="tasks">
-//       {task.map((task) => (
-//         <Task
-//           key={task.text}
-//           text={task.text}
-//           category={task.category}
-//           handleDelete={handleDelete}
-//         />
-//       ))}
-//     </div>
-//   );
-// }
-
 export default TaskList;
