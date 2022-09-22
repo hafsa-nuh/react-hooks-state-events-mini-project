@@ -1,10 +1,10 @@
 import React from "react";
 
-function Task({text, category , removeTask }) {
+function Task({text, category , handleDelete }) {
   // console.log(text)
-  const handleDelete = () => {
-    removeTask(text);
-  };
+  // const handleDelete = () => {
+  //   removeTask(text);
+  // };
   return (
     <div className="task">
       <div className="label">{category}</div>
